@@ -1,1 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon:100,200,300,400,500,600,700|Titillium+Web:100,200,300,400,500,600,700');
+
+/*--------------------------------------------------Body*/
+
+body {
+    font-family: "Titillium Web", sans-serif;
+    background-color: #F8E16C;
+}
