@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon:100,200,300,400,500,600,700|Titillium+Web:100,200,300,400,500,600,700');
 
+/*--------------------------------------------------HTML*/
+
+html {
+    height: 100%;
+}
+
 /*--------------------------------------------------Body*/
 
 body {
     font-family: "Titillium Web", sans-serif;
     background-color: #F8E16C;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 /*--------------------------------------------------Header*/
@@ -32,4 +41,17 @@ body {
     margin-left: 15px;
     margin-right: 0;
     position: fixed;
+}
+
+/*--------------------------------------------------Footer*/
+
+footer {
+    height: 1.8rem;
+    line-height: 1.8rem;
+    font-size: 0.9rem;
+    margin-top: auto;
+    background: #DAD2D6;
+    color: #125154;
+    text-align: center;
+    border-top: 0.05rem solid #125154;
 }
