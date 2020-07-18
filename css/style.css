@@ -44,6 +44,15 @@ body {
     position: fixed;
 }
 
+.nav-link {
+    font-size: 110%;
+    letter-spacing: 2px;
+    text-decoration: none;
+    padding: 0 !important;
+    margin-right: 30px;
+    color: #133C55;
+}
+
 /*--------------------------------------------------Footer*/
 
 footer {
@@ -54,5 +63,5 @@ footer {
     background: #DAD2D6;
     color: #125154;
     text-align: center;
-    border-top: 0.05rem solid #125154;
+    border-top: 0.05rem solid #F5F5F5;
 }
