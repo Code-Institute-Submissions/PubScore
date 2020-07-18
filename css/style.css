@@ -44,6 +44,10 @@ body {
     position: fixed;
 }
 
+.width-navbar-collapse {
+        width: 100%;
+}
+
 .nav-link {
     font-size: 110%;
     letter-spacing: 2px;
