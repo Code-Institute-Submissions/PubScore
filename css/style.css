@@ -33,6 +33,7 @@ body {
 .navbar-brand {
     font-family: "Do Hyeon", sans-serif;
     text-transform: uppercase;
+    text-decoration: underline;
     color: #125154;
     letter-spacing: 2px;
     font-weight: 600;
