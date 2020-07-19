@@ -11,22 +11,26 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg" id="navbar">
-            <a href="base.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 PubScore
             </a>
             <div class="width-navbar-collapse">
                 <div class="collapse navbar-collapse" id="navbarMenu">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="index.html" class="nav-link" id="home-link">Home</a></li>
-                        <li class="nav-item"><a href="overview.html" class="nav-link" id="overview-link">Overview</a></li>
-                        <li class="nav-item"><a href="updatescore.html" class="nav-link" id="update-link">Update Score</a></li>
-                        <li class="nav-item"><a href="addteam.html" class="nav-link" id="add-link">Add Team</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
+                        <li class="nav-item"><a href="/" class="nav-link" id="home-link">Home</a></li>
+                        <li class="nav-item"><a href="/overview" class="nav-link" id="overview-link">Overview</a></li>
+                        <li class="nav-item"><a href="/updatescore" class="nav-link" id="update-link">Update Score</a></li>
+                        <li class="nav-item"><a href="/addteam" class="nav-link" id="add-link">Add Team</a></li>
+                        <li class="nav-item"><a href="/contact" class="nav-link" id="contact-link">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
     <footer>
         <div>© 2020 Copyright: Frances Vugts</div>
     </footer>
