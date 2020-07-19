@@ -30,6 +30,14 @@ body {
     box-shadow: 0px 0px 10px 1px #125154;
 }
 
+.block-under-header {
+    height: 75px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #F5F5F5;
+}
+
 .navbar-brand {
     font-family: "Do Hyeon", sans-serif;
     text-transform: uppercase;
