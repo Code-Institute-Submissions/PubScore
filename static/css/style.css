@@ -18,7 +18,7 @@ body {
 
 /*--------------------------------------------------Header*/
 
-/* header {
+header {
     height: 5rem;
 }
 
@@ -32,11 +32,32 @@ body {
     padding: 0;
     margin: 0;
     box-shadow: 0 0 0.5rem 0.05rem #125154;
-} */
+}
 
-/*--------------------------------------------------Hamburger*/
+.navbar-brand {
+    font-family: "Do Hyeon", sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: #125154;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    font-size: 3rem;
+    margin-left: 2rem;
+    margin-right: 0;
+}
 
-.animated-icon2 {
+/*--------------------------------------------------Hamburger: code from md bootstrap*/
+.navbar-toggler {
+    margin-right: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#hamburger-button {
+    outline: none;
+}
+
+.animated-icon {
     width: 30px;
     height: 20px;
     position: relative;
@@ -52,9 +73,10 @@ body {
     cursor: pointer;
 }
 
-.animated-icon2 span {
+.animated-icon span {
     display: block;
     position: absolute;
+    background: #125154;
     height: 3px;
     width: 100%;
     border-radius: 9px;
@@ -70,67 +92,54 @@ body {
     transition: .25s ease-in-out;
 }
 
-.animated-icon2 span {
-    background: red;
-}
-
-.animated-icon2 span:nth-child(1) {
+.animated-icon span:nth-child(1) {
     top: 0px;
 }
 
-.animated-icon2 span:nth-child(2), .animated-icon2 span:nth-child(3) {
+.animated-icon span:nth-child(2), .animated-icon span:nth-child(3) {
     top: 10px;
 }
 
-.animated-icon2 span:nth-child(4) {
+.animated-icon span:nth-child(4) {
     top: 20px;
 }
 
-.animated-icon2.open span:nth-child(1) {
+.animated-icon.open span:nth-child(1) {
     top: 11px;
     width: 0%;
     left: 50%;
 }
 
-.animated-icon2.open span:nth-child(2) {
+.animated-icon.open span:nth-child(2) {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
-.animated-icon2.open span:nth-child(3) {
+.animated-icon.open span:nth-child(3) {
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
 
-.animated-icon2.open span:nth-child(4) {
+.animated-icon.open span:nth-child(4) {
     top: 11px;
     width: 0%;
     left: 50%;
 }
 
-/* .navbar-brand {
-    font-family: "Do Hyeon", sans-serif;
-    text-transform: uppercase;
-    text-decoration: underline;
-    color: #125154;
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-    float: left;
-    font-size: 3rem;
-    margin-left: 2rem;
-    margin-right: 0;
-    position: fixed;
-} */
-
-/* .width-navbar-collapse {
-        width: 100%;
+.navbar-nav {
+    background: #dad2d6;
 }
 
 .nav-link {
+    color: #125154;
+    text-align: center;
+}
+
+/* .nav-link {
     font-size: 1.25rem;
     text-decoration: none;
     padding: 0 !important;
