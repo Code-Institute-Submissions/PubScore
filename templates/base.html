@@ -9,30 +9,67 @@
     <title>PubScore</title>
 </head>
 <body>
+    
     <header>
-        <nav class="navbar navbar-expand-lg" id="navbar">
-            <a href="{{ url_for('index') }}" class="navbar-brand">
-                PubScore
-            </a>
-            <div class="width-navbar-collapse">
-                <div class="collapse navbar-collapse" id="navbarMenu">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link" id="home-link">Home</a></li>
-                        <li class="nav-item"><a href="{{ url_for('overview') }}" class="nav-link" id="overview-link">Overview</a></li>
-                        <li class="nav-item"><a href="{{ url_for('updatescore') }}" class="nav-link" id="update-link">Update Score</a></li>
-                        <li class="nav-item"><a href="{{ url_for('addteam') }}" class="nav-link" id="add-link">Add Team</a></li>
-                        <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link" id="contact-link">Contact</a></li>
-                    </ul>
-                </div>
+
+        <!--Navbar-->
+        <nav class="navbar">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="{{ url_for('index') }}">PubScore</a>
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent23" aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent23">
+
+            <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('overview') }}" class="nav-link" id="overview-link">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('updatescore') }}" class="nav-link" id="update-link">Update Score</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('addteam') }}" class="nav-link" id="add-link">Add Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('contact') }}" class="nav-link" id="contact-link">Contact</a>
+                    </li>
+                </ul>
+            <!-- Links -->
+
             </div>
+            <!-- Collapsible content -->
+
         </nav>
+        <!--/.Navbar-->
+        
     </header>
+    
     <section class="container-fluid main">
         {% block content %}
         {% endblock %}
     </section>
+    
     <footer>
         <div>© 2020 Copyright: Frances Vugts</div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        $('.second-button').on('click', function () {
+            $('.animated-icon2').toggleClass('open');
+        });
+    </script>
+
 </body>
 </html>
