@@ -132,6 +132,7 @@ header {
 
 .navbar-nav {
     background: #dad2d6;
+    border-bottom: 0.05rem solid #F5F5F5;
 }
 
 .nav-link {
