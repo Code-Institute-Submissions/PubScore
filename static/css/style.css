@@ -46,6 +46,11 @@ header {
     margin-right: 0;
 }
 
+.navbar-brand:hover {
+    text-decoration: underline;
+    color: #F8E16C;
+}
+
 /*--------------------------------------------------Hamburger: code from md bootstrap*/
 .navbar-toggler {
     margin-right: 2rem;
@@ -130,6 +135,10 @@ header {
     left: 50%;
 }
 
+.animated-icon:hover span {
+    background: #F8E16C;
+}
+
 .navbar-nav {
     background: #dad2d6;
     border-bottom: 0.05rem solid #F5F5F5;
@@ -138,6 +147,11 @@ header {
 .nav-link {
     color: #125154;
     text-align: center;
+}
+
+.nav-link:hover {
+    color: #125154;
+    background: #F5F5F5;
 }
 
 /* .nav-link {
