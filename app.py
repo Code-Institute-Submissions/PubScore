@@ -1,17 +1,29 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+
+if os.path.exists("env.py"):
+    import env
 
 app = Flask(__name__)
 
+MONGO_URI = os.environ.get("MONGO_URI")
+app.config["MONGO_DBNAME"] = 'PubScore'
+app.config["MONGO_URI"] = MONGO_URI
+
+mongo = PyMongo(app)
 
 @app.route("/")
+@app.route("/index")
 def index():
     return render_template("index.html")
 
 
 @app.route("/overview")
 def overview():
-    return render_template("overview.html")
+    return render_template("overview.html",
+                           competitors=mongo.db.competitors.find())
 
 
 @app.route("/updatescore")
@@ -33,37 +45,3 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
-
-
-
-
-
-
-
-import pymongo
-if os.path.exists("env.py"):
-    import env
-
-
-MONGO_URI = os.environ.get("MONGO_URI")
-DATABASE = "PubScore"
-COLLECTION = "competitors"
-
-
-def mongo_connect(url):
-    try:
-        conn = pymongo.MongoClient(url)
-        print("Mongo is connected")
-        return conn
-    except pymongo.errors.ConnectionFailure as e:
-        print("Could not connect to MongoDB: %s") % e
-
-
-conn = mongo_connect(MONGO_URI)
-
-coll = conn[DATABASE][COLLECTION]
-
-documents = coll.find()
-
-for doc in documents:
-    print(doc)

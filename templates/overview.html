@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Overview page</h1>
+    <h1>Overview page</h1>
+    {% for competitor in competitors %}
+        {{competitor.position}}
+        {{competitor.team_name}}
+        {{competitor.score}}
+    {% endfor %}
 {% endblock %}
