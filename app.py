@@ -36,6 +36,13 @@ def addteam():
     return render_template("addteam.html")
 
 
+@app.route('/insertteam', methods=['POST'])
+def insertteam():
+    competitors = mongo.db.competitors
+    competitors.insert_one(request.form.to_dict())
+    return redirect(url_for('overview'))
+
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
