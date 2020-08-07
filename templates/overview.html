@@ -4,6 +4,7 @@
     {% for competitor in competitors %}
         {{competitor.team_name}}
         {{competitor.score}}
+        <a href="{{url_for('deleteteam', competitor_id=competitor._id)}}" class="btn">Delete team!</a>
         <br>
     {% endfor %}
 {% endblock %}
