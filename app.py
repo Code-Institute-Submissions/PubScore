@@ -32,9 +32,10 @@ def deleteteam(competitor_id):
     return redirect(url_for('overview'))
 
 
-@app.route("/updatescore")
-def updatescore():
-    return render_template("updatescore.html")
+@app.route("/updatecompetition")
+def updatecompetition():
+    return render_template("updatecompetition.html",
+                           competitors=mongo.db.competitors.find())
 
 
 @app.route("/addteam")

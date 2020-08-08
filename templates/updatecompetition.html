@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for competitor in competitors %}
+        {{competitor.team_name}}
+        {{competitor.score}}
+        <input type="number" name="points_scored" id="points_scored" class="form-control" placeholder="Points scored" />
+        <a href="{{url_for('deleteteam', competitor_id=competitor._id)}}" class="btn">Update score!</a>
+        <a href="{{url_for('deleteteam', competitor_id=competitor._id)}}" class="btn">Delete team!</a>
+        <br>
+    {% endfor %}
+{% endblock %}
