@@ -32,6 +32,17 @@ def updateteams():
                            competitors=mongo.db.competitors.find())
 
 
+@app.route('/updatescore/<competitor_id>/<competitor_name>', methods=['POST'])
+def updatescore(competitor_id, competitor_name):
+    competitors = mongo.db.competitors
+    competitors.update({'_id': ObjectId(competitor_id)},
+    {
+        'team_name': competitor_name,
+        'score': request.form.get('points_scored')
+    })
+    return redirect(url_for('updateteams'))
+
+
 @app.route('/deleteteam/<competitor_id>')
 def deleteteam(competitor_id):
     mongo.db.competitors.remove({'_id': ObjectId(competitor_id)})
