@@ -29,12 +29,12 @@ def overview():
 @app.route('/deleteteam/<competitor_id>')
 def deleteteam(competitor_id):
     mongo.db.competitors.remove({'_id': ObjectId(competitor_id)})
-    return redirect(url_for('overview'))
+    return redirect(url_for('updateteams'))
 
 
-@app.route("/updatecompetition")
-def updatecompetition():
-    return render_template("updatecompetition.html",
+@app.route("/updateteams")
+def updateteams():
+    return render_template("updateteams.html",
                            competitors=mongo.db.competitors.find())
 
 
