@@ -39,7 +39,7 @@ def updatescore(competitor_id, competitor_name):
     competitors.update({'_id': ObjectId(competitor_id)},
     {
         'team_name': competitor_name,
-        'score': request.form.get('points_scored')
+        'score': int(request.form.get('points_scored'))
     })
     return redirect(url_for('updateteams'))
 
