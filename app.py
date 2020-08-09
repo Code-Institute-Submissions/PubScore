@@ -37,10 +37,10 @@ def updateteams():
 def updatescore(competitor_id, competitor_name):
     competitors = mongo.db.competitors
     competitors.update({'_id': ObjectId(competitor_id)},
-    {
-        'team_name': competitor_name,
-        'score': int(request.form.get('points_scored'))
-    })
+                       {
+                           'team_name': competitor_name,
+                           'score': int(request.form.get('points_scored'))
+                       })
     return redirect(url_for('updateteams'))
 
 
@@ -58,7 +58,13 @@ def addteam():
 @app.route('/insertteam', methods=['POST'])
 def insertteam():
     competitors = mongo.db.competitors
-    competitors.insert_one(request.form.to_dict())
+    name = (request.form.get("team_name"))
+    points = int(request.form.get("score"))
+    competitors.insert(
+        {
+            "team_name": name,
+            "score": points
+        })
     return redirect(url_for('overview'))
 
 
