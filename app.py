@@ -33,13 +33,17 @@ def updateteams():
                            competitors=mongo.db.competitors.find())
 
 
-@app.route('/updatescore/<competitor_id>/<competitor_name>', methods=['POST'])
-def updatescore(competitor_id, competitor_name):
+@app.route('/updatescore/<competitor_id>/<competitor_name>/<score>',
+           methods=['POST'])
+def updatescore(competitor_id, competitor_name, score):
     competitors = mongo.db.competitors
+    points_scored = int(request.form.get('points_scored'))
+    old_score = int(score)
+    new_score = old_score + points_scored
     competitors.update({'_id': ObjectId(competitor_id)},
                        {
                            'team_name': competitor_name,
-                           'score': int(request.form.get('points_scored'))
+                           'score': new_score
                        })
     return redirect(url_for('updateteams'))
 
