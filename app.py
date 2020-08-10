@@ -31,8 +31,9 @@ def overview():
 
 @app.route("/updateteams")
 def updateteams():
+    sorted_teamname = mongo.db.competitors.find().sort('team_name', 1)
     return render_template("updateteams.html",
-                           competitors=mongo.db.competitors.find())
+                           competitors=sorted_teamname)
 
 
 @app.route('/updatescore/<competitor_id>/<competitor_name>/<score>',
