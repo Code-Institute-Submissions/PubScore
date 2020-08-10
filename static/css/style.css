@@ -74,6 +74,10 @@ header {
     color: #133C55;
 } */
 
+.active {
+    background: #F5F5F5;
+}
+
 /*--------------------------------------------------Hamburger: code from md bootstrap*/
 .navbar-toggler {
     margin-right: 2rem;
