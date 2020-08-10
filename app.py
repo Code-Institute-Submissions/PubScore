@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import datetime
 
 if os.path.exists("env.py"):
     import env
@@ -13,6 +14,7 @@ app.config["MONGO_DBNAME"] = 'PubScore'
 app.config["MONGO_URI"] = MONGO_URI
 
 mongo = PyMongo(app)
+
 
 @app.route("/")
 @app.route("/index")
@@ -40,10 +42,13 @@ def updatescore(competitor_id, competitor_name, score):
     points_scored = int(request.form.get('points_scored'))
     old_score = int(score)
     new_score = old_score + points_scored
+    now = datetime.datetime.now()
+    today = now.strftime("%d-%m-%Y")
     competitors.update({'_id': ObjectId(competitor_id)},
                        {
                            'team_name': competitor_name,
-                           'score': new_score
+                           'score': new_score,
+                           'last_update': today
                        })
     return redirect(url_for('updateteams'))
 
