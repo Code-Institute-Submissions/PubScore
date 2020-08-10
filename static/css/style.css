@@ -51,6 +51,29 @@ header {
     color: #F8E16C;
 }
 
+.navbar-nav {
+    background: #dad2d6;
+    border-bottom: 0.05rem solid #F5F5F5;
+}
+
+.nav-link {
+    color: #125154;
+    text-align: center;
+}
+
+.nav-link:hover {
+    color: #125154;
+    background: #F5F5F5;
+}
+
+/* .nav-link {
+    font-size: 1.25rem;
+    text-decoration: none;
+    padding: 0 !important;
+    margin-right: 2rem;
+    color: #133C55;
+} */
+
 /*--------------------------------------------------Hamburger: code from md bootstrap*/
 .navbar-toggler {
     margin-right: 2rem;
@@ -138,29 +161,6 @@ header {
 .animated-icon:hover span {
     background: #F8E16C;
 }
-
-.navbar-nav {
-    background: #dad2d6;
-    border-bottom: 0.05rem solid #F5F5F5;
-}
-
-.nav-link {
-    color: #125154;
-    text-align: center;
-}
-
-.nav-link:hover {
-    color: #125154;
-    background: #F5F5F5;
-}
-
-/* .nav-link {
-    font-size: 1.25rem;
-    text-decoration: none;
-    padding: 0 !important;
-    margin-right: 2rem;
-    color: #133C55;
-} */
 
 /*--------------------------------------------------Main*/
 
