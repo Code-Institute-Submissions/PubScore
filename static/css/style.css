@@ -42,8 +42,14 @@ header {
     letter-spacing: 0.1rem;
     font-weight: 600;
     font-size: 3rem;
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-right: 0;
+}
+
+@media only screen and (min-width:350px) {
+    .navbar-brand {
+        margin-left: 2rem;
+    }
 }
 
 .navbar-brand:hover {
@@ -80,9 +86,15 @@ header {
 
 /*--------------------------------------------------Hamburger: code from md bootstrap*/
 .navbar-toggler {
-    margin-right: 2rem;
+    margin-right: 1rem;
     padding-left: 0;
     padding-right: 0;
+}
+
+@media only screen and (min-width:350px) {
+    .navbar-toggler {
+        margin-right: 2rem;
+    }
 }
 
 #hamburger-button {
