@@ -13,29 +13,27 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <a href="{{ url_for('index') }}" class="navbar-brand">PubScore</a>
-            <div class="width-navbar-collapse">
-                <button class="navbar-toggler" id="hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent23" aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
-                    <div class="animated-icon"><span></span><span></span><span></span><span></span></div>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent23">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item {% if request.path == url_for('index') %} active {% endif %}">
-                            <a href="{{ url_for('index') }}" class="nav-link" id="home-link">Home</a>
-                        </li>
-                        <li class="nav-item {% if request.path == url_for('overview') %} active {% endif %}">
-                            <a href="{{ url_for('overview') }}" class="nav-link" id="overview-link">Overview</a>
-                        </li>
-                        <li class="nav-item {% if request.path == url_for('updateteams') %} active {% endif %}">
-                            <a href="{{ url_for('updateteams') }}" class="nav-link" id="update-link">Update Teams</a>
-                        </li>
-                        <li class="nav-item {% if request.path == url_for('addteam') %} active {% endif %}">
-                            <a href="{{ url_for('addteam') }}" class="nav-link" id="add-link">Add Team</a>
-                        </li>
-                        <li class="nav-item {% if request.path == url_for('contact') %} active {% endif %}">
-                            <a href="{{ url_for('contact') }}" class="nav-link" id="contact-link">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+            <button class="navbar-toggler" id="hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent23" aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="animated-icon"><span></span><span></span><span></span><span></span></div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent23">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item {% if request.path == url_for('index') %} active {% endif %}">
+                        <a href="{{ url_for('index') }}" class="nav-link" id="home-link">Home</a>
+                    </li>
+                    <li class="nav-item {% if request.path == url_for('overview') %} active {% endif %}">
+                        <a href="{{ url_for('overview') }}" class="nav-link" id="overview-link">Overview</a>
+                    </li>
+                    <li class="nav-item {% if request.path == url_for('updateteams') %} active {% endif %}">
+                        <a href="{{ url_for('updateteams') }}" class="nav-link" id="update-link">Update Teams</a>
+                    </li>
+                    <li class="nav-item {% if request.path == url_for('addteam') %} active {% endif %}">
+                        <a href="{{ url_for('addteam') }}" class="nav-link" id="add-link">Add Team</a>
+                    </li>
+                    <li class="nav-item {% if request.path == url_for('contact') %} active {% endif %}">
+                        <a href="{{ url_for('contact') }}" class="nav-link" id="contact-link">Contact</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
