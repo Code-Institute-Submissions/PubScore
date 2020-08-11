@@ -37,7 +37,6 @@ header {
 .navbar-brand {
     font-family: "Do Hyeon", sans-serif;
     text-transform: uppercase;
-    text-decoration: underline;
     color: #125154;
     letter-spacing: 0.1rem;
     font-weight: 600;
@@ -53,8 +52,12 @@ header {
 }
 
 .navbar-brand:hover {
-    text-decoration: underline;
-    color: #F8E16C;
+    color: transparent;
+    background-image: linear-gradient( #DAD2D6, #F8E16C );
+    background-size: auto 115%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-position-y: -15%;
 }
 
 .navbar-nav {
