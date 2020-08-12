@@ -22,6 +22,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
+
 @app.route("/overview")
 def overview():
     sorted_score = mongo.db.competitors.find().sort('score', -1)
