@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for
+from flask_oidc import OpenIDConnect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import datetime
@@ -8,11 +9,15 @@ if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
-
+app.config["OIDC_CLIENT_SECRETS"] = "client_secrets.json"
+app.config["OIDC_COOKIE_SECURE"] = False
+app.config["OIDC_CALLBACK_ROUTE"] = "/oidc/callback"
+app.config["OIDC_SCOPES"] = ["openid", "email", "profile"]
+app.config["SECRET_KEY"] = "{{ LONG_RANDOM_STRING }}"
+oidc = OpenIDConnect(app)
 MONGO_URI = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'PubScore'
 app.config["MONGO_URI"] = MONGO_URI
-
 mongo = PyMongo(app)
 
 
@@ -25,6 +30,11 @@ def index():
 @app.route("/login")
 def login():
     return render_template("login.html")
+
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
 
 @app.route("/overview")
