@@ -18,6 +18,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent23">
                 <ul class="navbar-nav ml-auto">
+                    {% if not g.user %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('dashboard') }}" class="nav-link {% if request.path == url_for('dashboard') %} active {% endif %}" id="dashboard-link">Dashboard</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                         <a href="{{ url_for('index') }}" class="nav-link {% if request.path == url_for('index') %} active {% endif %}" id="home-link">Home</a>
                     </li>
@@ -33,6 +38,7 @@
                     <li class="nav-item">
                         <a href="{{ url_for('contact') }}" class="nav-link {% if request.path == url_for('contact') %} active {% endif %}" id="contact-link">Contact</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
