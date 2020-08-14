@@ -105,7 +105,7 @@ def insertteam():
         {
             "team_name": name,
             "score": points,
-            "url": photo
+            "photo": photo
         })
     return redirect(url_for('overview'))
 
