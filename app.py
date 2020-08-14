@@ -66,27 +66,28 @@ def updateteams():
                            competitors=sorted_teamname)
 
 
-@app.route('/updatescore/<competitor_id>/<competitor_name>/<score>',
+@app.route('/updatescore/<comp_id>/<comp_name>/<score>/<comp_photo>',
            methods=['POST'])
-def updatescore(competitor_id, competitor_name, score):
+def updatescore(comp_id, comp_name, score, comp_photo):
     competitors = mongo.db.competitors
     points_scored = int(request.form.get('points_scored'))
     old_score = int(score)
     new_score = old_score + points_scored
     now = datetime.datetime.now()
     today = now.strftime("%d-%m-%Y")
-    competitors.update({'_id': ObjectId(competitor_id)},
+    competitors.update({'_id': ObjectId(comp_id)},
                        {
-                           'team_name': competitor_name,
+                           'team_name': comp_name,
                            'score': new_score,
+                           'photo': comp_photo,
                            'last_update': today
                        })
     return redirect(url_for('updateteams'))
 
 
-@app.route('/deleteteam/<competitor_id>')
-def deleteteam(competitor_id):
-    mongo.db.competitors.remove({'_id': ObjectId(competitor_id)})
+@app.route('/deleteteam/<comp_id>')
+def deleteteam(comp_id):
+    mongo.db.competitors.remove({'_id': ObjectId(comp_id)})
     return redirect(url_for('updateteams'))
 
 

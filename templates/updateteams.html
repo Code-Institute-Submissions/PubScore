@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for competitor in competitors %}
-        <form action="{{ url_for('updatescore', competitor_id=competitor._id, competitor_name=competitor.team_name, score=competitor.score) }}" method="POST">
+        <form action="{{ url_for('updatescore', comp_id=competitor._id, comp_name=competitor.team_name, score=competitor.score, comp_photo=competitor.photo) }}" method="POST">
             {{competitor.team_name}}
             {{competitor.score}}
             {{competitor.last_update}}
             <input type="number" name="points_scored" id="points_scored" class="form-control" placeholder="Points scored" />
             <button type="submit" class="btn">Update score!</button>
-            <a href="{{url_for('deleteteam', competitor_id=competitor._id)}}" class="btn">Delete team!</a>
+            <a href="{{url_for('deleteteam', comp_id=competitor._id)}}" class="btn">Delete team!</a>
         </form>
     {% endfor %}
 {% endblock %}
