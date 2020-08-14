@@ -9,11 +9,12 @@ if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+SECRET_KEY = os.environ.get("SECRET_KEY")
 app.config["OIDC_CLIENT_SECRETS"] = "client_secrets.json"
 app.config["OIDC_COOKIE_SECURE"] = False
 app.config["OIDC_CALLBACK_ROUTE"] = "/oidc/callback"
 app.config["OIDC_SCOPES"] = ["openid", "email", "profile"]
-app.config["SECRET_KEY"] = "{{ LONG_RANDOM_STRING }}"
+app.config["SECRET_KEY"] = SECRET_KEY
 oidc = OpenIDConnect(app)
 MONGO_URI = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'PubScore'
