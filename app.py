@@ -100,10 +100,12 @@ def insertteam():
     competitors = mongo.db.competitors
     name = (request.form.get("team_name"))
     points = int(request.form.get("score"))
+    photo = (request.form.get("photo"))
     competitors.insert(
         {
             "team_name": name,
-            "score": points
+            "score": points,
+            "url": photo
         })
     return redirect(url_for('overview'))
 
