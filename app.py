@@ -96,12 +96,12 @@ def addteam():
 @app.route('/insertteam', methods=['POST'])
 def insertteam():
     competitors = mongo.db.competitors
-    name = (request.form.get("team_name"))
+    name = request.form.get("team_name").capitalize()
     points = int(request.form.get("score"))
     if request.form.get("photo") == "":
         photo = "../static/images/no-photo.png"
     else:
-        photo = (request.form.get("photo"))
+        photo = request.form.get("photo")
     competitors.insert(
         {
             "team_name": name,
