@@ -99,7 +99,7 @@ def insertteam():
     name = (request.form.get("team_name"))
     points = int(request.form.get("score"))
     if request.form.get("photo") == "":
-        photo = "placeholder_photo"
+        photo = "../static/images/no-photo.png"
     else:
         photo = (request.form.get("photo"))
     competitors.insert(
