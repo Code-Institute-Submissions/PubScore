@@ -98,7 +98,10 @@ def insertteam():
     competitors = mongo.db.competitors
     name = (request.form.get("team_name"))
     points = int(request.form.get("score"))
-    photo = (request.form.get("photo"))
+    if request.form.get("photo") == "":
+        photo = "placeholder_photo"
+    else:
+        photo = (request.form.get("photo"))
     competitors.insert(
         {
             "team_name": name,
