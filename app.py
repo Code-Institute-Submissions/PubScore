@@ -73,10 +73,12 @@ def updatescore(comp_id, score):
     points_scored = int(request.form.get('points_scored'))
     old_score = int(score)
     new_score = old_score + points_scored
-    # now = datetime.datetime.now()
-    # today = now.strftime("%d-%m-%Y")
+    now = datetime.datetime.now()
+    today = now.strftime("%d-%m-%Y")
     competitors.update({'_id': ObjectId(comp_id)},
-                       {'$set': {'score': new_score}})
+                       {
+                           '$set': {'score': new_score, 'last_update': today}
+                       })
     return redirect(url_for('updateteams'))
 
 
