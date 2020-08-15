@@ -66,22 +66,17 @@ def updateteams():
                            competitors=sorted_teamname)
 
 
-@app.route('/updatescore/<comp_id>/<comp_name>/<score>/<comp_photo>',
+@app.route('/updatescore/<comp_id>/<score>',
            methods=['POST'])
-def updatescore(comp_id, comp_name, score, comp_photo):
+def updatescore(comp_id, score):
     competitors = mongo.db.competitors
     points_scored = int(request.form.get('points_scored'))
     old_score = int(score)
     new_score = old_score + points_scored
-    now = datetime.datetime.now()
-    today = now.strftime("%d-%m-%Y")
+    # now = datetime.datetime.now()
+    # today = now.strftime("%d-%m-%Y")
     competitors.update({'_id': ObjectId(comp_id)},
-                       {
-                           'team_name': comp_name,
-                           'score': new_score,
-                           'photo': comp_photo,
-                           'last_update': today
-                       })
+                       {'$set': {'score': new_score}})
     return redirect(url_for('updateteams'))
 
 

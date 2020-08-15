@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for competitor in competitors %}
-        <form action="{{ url_for('updatescore', comp_id=competitor._id, comp_name=competitor.team_name, score=competitor.score, comp_photo=competitor.photo) }}" method="POST">
+        <form action="{{ url_for('updatescore', comp_id=competitor._id, score=competitor.score) }}" method="POST">
             {{competitor.team_name}}
             {{competitor.score}}
             {{competitor.last_update}}
