@@ -1,4 +1,5 @@
-// Function for sending a mail to the owner of the website and clearing the form.
+// Function for sending a mail to the owner of the website and clearing the form after that.
+// Returns a message to let the user know if the mail was send succesfully
 function sendMail(contactForm) {
     try {
         emailjs.send("gmail", "PubScore", {
