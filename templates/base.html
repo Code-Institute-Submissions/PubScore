@@ -17,6 +17,7 @@
 <body>
     
     <header>
+        <!-- navbar with links to the different pages -->
         <nav class="navbar navbar-expand-lg">
             <a href="{{ url_for('index') }}" class="navbar-brand">PubScore</a>
             <button class="navbar-toggler" id="hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent23" aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,11 +57,13 @@
         </nav>
     </header>
     
+    <!-- This is where the content for the different pages come in -->
     <section class="container-fluid main">
         {% block content %}
         {% endblock %}
     </section>
     
+    <!-- footer -->
     <footer>
         <div>© 2020 Copyright: Frances Vugts</div>
     </footer>

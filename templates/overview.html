@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for competitor in competitors %}
+        <!-- An overview of all the teams in the competition ranked by score -->
         Rank: {{loop.index}}<br>
         Team name: {{competitor.team_name}}<br>
         Team score: {{competitor.score}}<br>

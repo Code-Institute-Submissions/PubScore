@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+    <!-- The user can use this form to add a new team to the competition.
+    A team name and starting score are required, a link to a group photo is not.
+    In case there is no group photo, app.py provides the code to store a link to no-photo.png -->
     <form action="{{ url_for('insertteam') }}" method="POST">
         <input type="text" name="team_name" id="team_name" class="form-control" placeholder="Team name" required />
         <input type="number" name="score" id="score" class="form-control" placeholder="Score" required />

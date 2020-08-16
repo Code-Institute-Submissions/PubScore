@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for competitor in competitors %}
+        <!-- Overview of al the teams sorted bij teamname, with a field to update each teams score and u button to delete a team from the competition -->
         <form action="{{ url_for('updatescore', comp_id=competitor._id, score=competitor.score) }}" method="POST">
             {{competitor.team_name}}
             {{competitor.score}}
@@ -10,6 +11,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Delete team!</button>
         </form>
 
+        <!-- When deleting a team, this modal will become visible to check if that's really what the user wants to do -->
         <div class="modal fade" id="myModal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
