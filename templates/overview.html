@@ -3,17 +3,21 @@
     <!-- An overview of all the teams in the competition ranked by score -->
     <div class="row">
         {% for competitor in competitors %}
-            <div class="col-12">
+            <div class="card-container col-lg-6">
                 <div class="card" id="{% if loop.index == 1 %}rank-one{% endif %}">
-                    <div class="row no-gutters">
-                        <img src="{{competitor.photo}}" class="team-photo card-img" alt="Team photo">
-                        <div class="card-body">
-                            <h5 class="card-title">Rank: {{loop.index}}</h5>
-                            <p class="card-text">
-                            Team name: {{competitor.team_name}}<br>
-                            Team score: {{competitor.score}}<br>
-                            Last update: {{competitor.last_update}}
-                            </p>
+                    <div class="row">
+                        <div class="col-5 team-photo">
+                            <img src="{{competitor.photo}}" class="card-img" alt="Team photo">
+                        </div>
+                        <div class="col-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Rank: {{loop.index}}</h5>
+                                <p class="card-text">
+                                Team name: {{competitor.team_name}}<br>
+                                Team score: {{competitor.score}}<br>
+                                Last update: {{competitor.last_update}}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
