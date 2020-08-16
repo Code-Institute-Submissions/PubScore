@@ -201,9 +201,19 @@ header {
 
 /*--------------------------------------------------Main*/
 
+.container-fluid {
+    margin-top: 1rem;
+}
+
 .card {
     color: #125154;
     background: #F5F5F5;
+    margin-bottom: 1rem;
+}
+
+#rank-one {
+    color: #F5F5F5;
+    background: #125154;
 }
 
 .team-photo {

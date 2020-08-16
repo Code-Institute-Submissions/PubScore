@@ -4,7 +4,7 @@
     <div class="row">
         {% for competitor in competitors %}
             <div class="col-12">
-                <div class="card">
+                <div class="card" id="{% if loop.index == 1 %}rank-one{% endif %}">
                     <div class="card-body">
                         <img src="{{competitor.photo}}" class="team-photo" alt="Team photo">
                         <h5 class="card-title">Rank: {{loop.index}}</h5>
