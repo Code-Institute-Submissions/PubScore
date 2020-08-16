@@ -217,9 +217,15 @@ header {
 }
 
 .team-photo {
-    height: 5rem;
-    width: 7.5rem;
+    height: 10rem;
+    width: 15rem;
     display: none;
+}
+
+@media only screen and (min-width:768px) {
+    .team-photo {
+        display: block;
+    }
 }
 
 /*--------------------------------------------------Footer*/

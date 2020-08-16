@@ -5,14 +5,16 @@
         {% for competitor in competitors %}
             <div class="col-12">
                 <div class="card" id="{% if loop.index == 1 %}rank-one{% endif %}">
-                    <div class="card-body">
-                        <img src="{{competitor.photo}}" class="team-photo" alt="Team photo">
-                        <h5 class="card-title">Rank: {{loop.index}}</h5>
-                        <p class="card-text">
-                        Team name: {{competitor.team_name}}<br>
-                        Team score: {{competitor.score}}<br>
-                        Last update: {{competitor.last_update}}
-                        </p>
+                    <div class="row no-gutters">
+                        <img src="{{competitor.photo}}" class="team-photo card-img" alt="Team photo">
+                        <div class="card-body">
+                            <h5 class="card-title">Rank: {{loop.index}}</h5>
+                            <p class="card-text">
+                            Team name: {{competitor.team_name}}<br>
+                            Team score: {{competitor.score}}<br>
+                            Last update: {{competitor.last_update}}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
