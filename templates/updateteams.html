@@ -7,7 +7,19 @@
             {{competitor.last_update}}
             <input type="number" name="points_scored" id="points_scored" class="form-control" placeholder="Points scored" />
             <button type="submit" class="btn">Update score!</button>
-            <a href="{{url_for('deleteteam', comp_id=competitor._id)}}" class="btn">Delete team!</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Delete team!</button>
         </form>
+
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h2>Are you sure you want to delete team {{competitor.team_name}}?</h2>
+                        <a href="{{url_for('deleteteam', comp_id=competitor._id)}}" class="btn btn-primary">Yes</a>
+                        <a href="" class="btn btn-primary">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 {% endblock %}
