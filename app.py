@@ -141,7 +141,7 @@ def insertteam():
 
 # Contact page in case of any problems
 @app.route("/contact")
-# @oidc.require_login
+@oidc.require_login
 def contact():
     return render_template("contact.html")
 
