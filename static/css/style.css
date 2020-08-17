@@ -268,17 +268,25 @@ header {
     margin-bottom: 2.5rem;
 }
 
-.contact-form {
+.form {
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 2.5rem;
 }
 
 @media only screen and (min-width: 992px) {
-    .contact-form {
+    .form {
         margin-left: 15%;
         margin-right: 15%;
     }
+}
+
+.form-margin {
+    margin: 0.5rem;
+}
+
+.form-margin-btn {
+    margin: 1rem 0.5rem 0.5rem 0.5rem;
 }
 
 /*--------------------------------------------------Footer*/
