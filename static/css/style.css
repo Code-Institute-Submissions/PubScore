@@ -231,9 +231,18 @@ header {
     background: #125154;
 }
 
+.btn:hover {
+    color: #F5F5F5;
+    background: #F8E16C;
+}
+
 .update-btn, .modal-btn {
     margin-top: 1rem;
     margin-right: 1rem;
+}
+
+.modal {
+    text-align: center;
 }
 
 /*--------------------------------------------------Footer*/
