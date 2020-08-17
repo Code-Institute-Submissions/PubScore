@@ -245,7 +245,7 @@ header {
     text-align: center;
 }
 
-.contact-page {
+.page {
     color: #125154;
     background: #F5F5F5;
     margin-left: 0;
@@ -253,11 +253,11 @@ header {
     margin-bottom: 1rem; 
 }
 
-.contact-form {
+.content {
     padding: 1rem;
 }
 
-.contact-text {
+.text {
     text-align: center;
     color: #125154;
     margin-bottom: 2.5rem;
