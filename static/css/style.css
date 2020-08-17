@@ -245,6 +245,23 @@ header {
     text-align: center;
 }
 
+.contact-page {
+    color: #125154;
+    background: #F5F5F5;
+    margin-left: 0;
+    margin-right: 0; 
+}
+
+.contact-form {
+    padding: 1rem;
+}
+
+.contact-text {
+    text-align: center;
+    color: #125154;
+    margin-bottom: 1rem;
+}
+
 /*--------------------------------------------------Footer*/
 
 footer {

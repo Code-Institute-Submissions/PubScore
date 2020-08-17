@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="row">
-        <div class="col-12">
+    <div class="row contact-page">
+        <div class="col-12 contact-form">
             <!-- A contact form for the owner of the pub in case there's any problems with the website -->
+            <div class="contact-text">
+                <h5>In case of any problems</h5>
+                <h6>Use this contact form</h6>
+            </div>
             <form onsubmit="return sendMail(this);">
                 <input type="text" id="name" name="name" placeholder=" Name" class="form-control" required/><br>
                 <input type="email" id="email" name="email" placeholder=" Email" class="form-control" required/><br>
-                <textarea rows="3" id="message" name="message" placeholder=" Message" class="form-control" required></textarea><br>
-                <input type="submit" class="submit-btn btn" value="Submit"/>
+                <textarea rows="5" id="message" name="message" placeholder=" Message" class="form-control" required></textarea><br>
+                <input type="submit" class="submit-btn btn form-control" value="Submit"/>
             </form>
         <div>
     </div>
