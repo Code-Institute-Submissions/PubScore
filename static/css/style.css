@@ -257,10 +257,13 @@ header {
     padding: 1rem;
 }
 
+.title-text {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
 .text {
     text-align: center;
-    color: #125154;
-    margin-bottom: 2.5rem;
 }
 
 /*--------------------------------------------------Footer*/
