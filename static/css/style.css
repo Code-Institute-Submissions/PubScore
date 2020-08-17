@@ -232,8 +232,8 @@ header {
 }
 
 .btn:hover {
-    color: #F5F5F5;
-    background: #F8E16C;
+    color: #125154;
+    background: #DAD2D6;
 }
 
 .update-btn, .modal-btn {
@@ -246,24 +246,39 @@ header {
 }
 
 .page {
-    color: #125154;
-    background: #F5F5F5;
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 1rem; 
 }
 
 .content {
+    color: #125154;
+    background: #F5F5F5;
     padding: 1rem;
 }
 
 .title-text {
     text-align: center;
+    margin-top: 2rem;
     margin-bottom: 2.5rem;
 }
 
 .text {
     text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.contact-form {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2.5rem;
+}
+
+@media only screen and (min-width: 992px) {
+    .contact-form {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
 }
 
 /*--------------------------------------------------Footer*/
