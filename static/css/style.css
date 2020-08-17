@@ -226,6 +226,16 @@ header {
     }
 }
 
+.btn {
+    color: #F5F5F5;
+    background: #125154;
+}
+
+.update-btn {
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
 /*--------------------------------------------------Footer*/
 
 footer {
