@@ -249,7 +249,8 @@ header {
     color: #125154;
     background: #F5F5F5;
     margin-left: 0;
-    margin-right: 0; 
+    margin-right: 0;
+    margin-bottom: 1rem; 
 }
 
 .contact-form {
