@@ -51,14 +51,14 @@ def index():
 
 # Login for admin
 @app.route("/login")
-# @oidc.require_login
+@oidc.require_login
 def login():
     return redirect(url_for(".dashboard"))
 
 
 # Dashboard after login for some explanation
 @app.route("/dashboard")
-# @oidc.require_login
+@oidc.require_login
 def dashboard():
     return render_template("dashboard.html")
 
@@ -78,7 +78,7 @@ def overview():
 # From here the admin can delete teams from the competition
 # Sorted by teamname for easy updating
 @app.route("/updateteams")
-# @oidc.require_login
+@oidc.require_login
 def updateteams():
     sorted_teamname = mongo.db.competitors.find().sort('team_name', 1)
     return render_template("updateteams.html",
@@ -114,7 +114,7 @@ def deleteteam(comp_id):
 
 # Add a team by using a form
 @app.route("/addteam")
-# @oidc.require_login
+@oidc.require_login
 def addteam():
     return render_template("addteam.html")
 
@@ -141,7 +141,7 @@ def insertteam():
 
 # Contact page in case of any problems
 @app.route("/contact")
-# @oidc.require_login
+@oidc.require_login
 def contact():
     return render_template("contact.html")
 

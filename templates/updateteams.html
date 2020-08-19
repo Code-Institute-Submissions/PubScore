@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div class="row page">
+        <div class="col-12 content">
+            <div class="title-text">
+                <h1>Update teams!</h1>
+                <h4>Below you can add (or substract) points for each team, or delete a team from the competition.</h4>
+            </div>
+        </div>
+    </div>
     <div class="row">
         {% for competitor in competitors %}
             <div class="col-12 col-md-6 col-lg-4">
