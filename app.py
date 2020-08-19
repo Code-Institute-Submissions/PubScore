@@ -1,8 +1,6 @@
 # All the imports needed for this project
 import os
-from flask import Flask, render_template, g, redirect, request, url_for
-from flask_oidc import OpenIDConnect
-from okta import UsersClient
+from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import datetime
@@ -14,32 +12,11 @@ if os.path.exists("env.py"):
 # App instance
 app = Flask(__name__)
 
-# Okta configuration
-SECRET_KEY = os.environ.get("SECRET_KEY")
-app.config["OIDC_CLIENT_SECRETS"] = "client_secrets.json"
-app.config["OIDC_COOKIE_SECURE"] = False
-app.config["OIDC_CALLBACK_ROUTE"] = "/oidc/callback"
-app.config["OIDC_SCOPES"] = ["openid", "email", "profile"]
-app.config["SECRET_KEY"] = SECRET_KEY
-app.config["OIDC_ID_TOKEN_COOKIE_NAME"] = "oidc_token"
-oidc = OpenIDConnect(app)
-okta_client = UsersClient("https://dev-395248.okta.com",
-                          "00SvA-wtwtZrunBeOfMPCmIdo788BQcjWq_81b3dwK")
-
 # MongoDB configuration
 MONGO_URI = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'PubScore'
 app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
-
-
-# Setup g.user
-@app.before_request
-def before_request():
-    if oidc.user_loggedin:
-        g.user = okta_client.get_user(oidc.user_getfield("sub"))
-    else:
-        g.user = None
 
 
 # Index to welcome the user
@@ -51,14 +28,12 @@ def index():
 
 # Login for admin
 @app.route("/login")
-@oidc.require_login
 def login():
     return redirect(url_for(".dashboard"))
 
 
 # Dashboard after login for some explanation
 @app.route("/dashboard")
-@oidc.require_login
 def dashboard():
     return render_template("dashboard.html")
 
@@ -78,7 +53,6 @@ def overview():
 # From here the admin can delete teams from the competition
 # Sorted by teamname for easy updating
 @app.route("/updateteams")
-@oidc.require_login
 def updateteams():
     sorted_teamname = mongo.db.competitors.find().sort('team_name', 1)
     return render_template("updateteams.html",
@@ -114,7 +88,6 @@ def deleteteam(comp_id):
 
 # Add a team by using a form
 @app.route("/addteam")
-@oidc.require_login
 def addteam():
     return render_template("addteam.html")
 
@@ -141,7 +114,6 @@ def insertteam():
 
 # Contact page in case of any problems
 @app.route("/contact")
-@oidc.require_login
 def contact():
     return render_template("contact.html")
 
