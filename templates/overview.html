@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
     <!-- An overview of all the teams in the competition ranked by score -->
+    <div class="row page">
+        <div class="col-12 content">
+            <div class="title-text">
+                <h1>Team ranking!</h1>
+                <h4>Take a look below to see how your team is doing.</h4>
+            </div>
+        </div>
+    </div>
     <div class="row">
         {% for competitor in competitors %}
             <div class="col-12 col-lg-6">
