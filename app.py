@@ -11,7 +11,8 @@ if os.path.exists("env.py"):
 
 
 class User:
-    def __init__(self, username, password):
+    def __init__(self, id, username, password):
+        self.id = id
         self.username = username
         self.password = password
 
@@ -19,15 +20,16 @@ class User:
         return f'<User: {self.username}>'
 
 
-SECRET_PASSWORD = os.environ.get("SECRET_PASSWORD")
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_PASSWORD_ONE = os.environ.get("SECRET_PASSWORD_ONE")
+SECRET_PASSWORD_TWO = os.environ.get("SECRET_PASSWORD_TWO")
 users = []
-users.append(User(username='Frances', password=SECRET_PASSWORD))
-users.append(User(username='Admin', password=SECRET_KEY))
+users.append(User(id=1, username='Frances', password=SECRET_PASSWORD_ONE))
+users.append(User(id=2, username='Admin', password=SECRET_PASSWORD_TWO))
 
 
 # App instance
 app = Flask(__name__)
+app.secret_key = 'verysecret'
 
 # MongoDB configuration
 MONGO_URI = os.environ.get("MONGO_URI")
@@ -47,14 +49,17 @@ def index():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        session.pop('username', None)
+        session.pop('user_id', None)
 
         username = request.form['username']
         password = request.form['password']
 
         user = [x for x in users if x.username == username][0]
         if user and user.password == password:
-            session['username'] = user.username
+            session['user_id'] = user.id
+            return redirect(url_for('dashboard'))
+
+        return redirect(url_for('login'))
 
     return render_template("login.html")
 
