@@ -10,6 +10,7 @@ if os.path.exists("env.py"):
     import env
 
 
+# Log in configuration
 class User:
     def __init__(self, id, username, password):
         self.id = id
@@ -46,6 +47,9 @@ def index():
 
 
 # Login for admin
+# Checks if user and password are correct
+# If correct, redirects to dashboard
+# If incorrect, redirects to log in
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
