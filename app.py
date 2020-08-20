@@ -9,6 +9,21 @@ import datetime
 if os.path.exists("env.py"):
     import env
 
+
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def __repr__(self):
+        return f'<User: {self.username}>'
+
+
+SECRET_PASSWORD = os.environ.get("SECRET_PASSWORD")
+users = []
+users.append(User(username='Frances', password=SECRET_PASSWORD))
+
+
 # App instance
 app = Flask(__name__)
 
