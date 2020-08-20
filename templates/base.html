@@ -33,7 +33,7 @@
                         <a href="{{ url_for('overview') }}" class="nav-link {% if request.path == url_for('overview') %} active {% endif %}">Overview</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url_for('login') }}" class="nav-link {% if request.path == url_for('login') %} active {% endif %}">Log In / Register</a>
+                        <a href="{{ url_for('login') }}" class="nav-link {% if request.path == url_for('login') %} active {% endif %}">Log in</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -43,10 +43,10 @@
                         <a href="{{ url_for('overview') }}" class="nav-link {% if request.path == url_for('overview') %} active {% endif %}">Overview</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url_for('addteam') }}" class="nav-link {% if request.path == url_for('addteam') %} active {% endif %}">Add Team</a>
+                        <a href="{{ url_for('addteam') }}" class="nav-link {% if request.path == url_for('addteam') %} active {% endif %}">Add team</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url_for('updateteams') }}" class="nav-link {% if request.path == url_for('updateteams') %} active {% endif %}">Update Teams</a>
+                        <a href="{{ url_for('updateteams') }}" class="nav-link {% if request.path == url_for('updateteams') %} active {% endif %}">Update teams</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ url_for('contact') }}" class="nav-link {% if request.path == url_for('contact') %} active {% endif %}">Contact</a>

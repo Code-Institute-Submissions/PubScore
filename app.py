@@ -29,7 +29,7 @@ def index():
 # Login for admin
 @app.route("/login")
 def login():
-    return redirect(url_for(".dashboard"))
+    return render_template("login.html")
 
 
 # Dashboard after login for some explanation
