@@ -1,6 +1,6 @@
 # All the imports needed for this project
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import datetime
@@ -20,8 +20,10 @@ class User:
 
 
 SECRET_PASSWORD = os.environ.get("SECRET_PASSWORD")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 users = []
 users.append(User(username='Frances', password=SECRET_PASSWORD))
+users.append(User(username='Admin', password=SECRET_KEY))
 
 
 # App instance
@@ -42,8 +44,18 @@ def index():
 
 
 # Login for admin
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        session.pop('username', None)
+
+        username = request.form['username']
+        password = request.form['password']
+
+        user = [x for x in users if x.username == username][0]
+        if user and user.password == password:
+            session['username'] = user.username
+
     return render_template("login.html")
 
 
