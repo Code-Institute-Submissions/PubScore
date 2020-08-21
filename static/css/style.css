@@ -205,6 +205,12 @@ header {
     margin-top: 1rem;
 }
 
+.alert {
+    text-align: center;
+    color: #F5F5F5;
+    background: #125154;
+}
+
 .card {
     color: #125154;
     background: #F5F5F5;

@@ -75,13 +75,13 @@ def login():
         try:
             user = [x for x in users if x.username == username][0]
         except IndexError:
-            flash('Please use correct username and password', 'info')
+            flash('Please use correct username and password')
             return redirect(url_for('login'))
         if user and user.password == password:
             session['user_id'] = user.id
             return redirect(url_for('dashboard'))
 
-        flash('Please use correct username and password', 'info')
+        flash('Please use correct username and password')
         return redirect(url_for('login'))
 
     return render_template("login.html")
