@@ -62,7 +62,7 @@ def before_request():
 # Login for admin
 # Checks if user and password are correct
 # If correct, redirects to dashboard
-# If incorrect, redirects to login
+# If incorrect, redirects to login and shows message for user
 # Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
 @app.route("/login", methods=['GET', 'POST'])
 def login():
