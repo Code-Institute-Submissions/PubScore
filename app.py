@@ -11,6 +11,7 @@ if os.path.exists("env.py"):
 
 
 # Log in configuration
+# Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
 class User:
     def __init__(self, id, username, password):
         self.id = id
@@ -46,6 +47,8 @@ def index():
     return render_template("index.html")
 
 
+# Set g.user at login to show the right navigation links
+# Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
 @app.before_request
 def before_request():
     g.user = None
@@ -59,6 +62,7 @@ def before_request():
 # Checks if user and password are correct
 # If correct, redirects to dashboard
 # If incorrect, redirects to login
+# Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -175,7 +179,8 @@ def contact():
     return render_template("contact.html")
 
 
-# Log out page
+# Log out
+# Used example from: https://www.roytuts.com/python-login-and-logout-example/
 @app.route("/logout")
 def logout():
     if not g.user:
