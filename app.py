@@ -1,6 +1,7 @@
 # All the imports needed for this project
 import os
-from flask import Flask, g, render_template, redirect, request, url_for, session
+from flask import (Flask, g, render_template, redirect,
+                   request, url_for, session, flash)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import datetime
@@ -71,11 +72,16 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        user = [x for x in users if x.username == username][0]
+        try:
+            user = [x for x in users if x.username == username][0]
+        except IndexError:
+            flash('Please use correct username and password', 'info')
+            return redirect(url_for('login'))
         if user and user.password == password:
             session['user_id'] = user.id
             return redirect(url_for('dashboard'))
 
+        flash('Please use correct username and password', 'info')
         return redirect(url_for('login'))
 
     return render_template("login.html")
