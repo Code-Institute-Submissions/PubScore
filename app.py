@@ -1,6 +1,6 @@
 # All the imports needed for this project
 import os
-from flask import Flask, render_template, redirect, request, url_for, session
+from flask import Flask, g, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import datetime
@@ -46,6 +46,15 @@ def index():
     return render_template("index.html")
 
 
+@app.before_request
+def before_request():
+    g.user = None
+
+    if 'user_id' in session:
+        user = [x for x in users if x.id == session['user_id']][0]
+        g.user = user
+
+
 # Login for admin
 # Checks if user and password are correct
 # If correct, redirects to dashboard
@@ -71,6 +80,9 @@ def login():
 # Dashboard after login for some explanation
 @app.route("/dashboard")
 def dashboard():
+    if not g.user:
+        return redirect(url_for('login'))
+
     return render_template("dashboard.html")
 
 
@@ -90,6 +102,9 @@ def overview():
 # Sorted by teamname for easy updating
 @app.route("/updateteams")
 def updateteams():
+    if not g.user:
+        return redirect(url_for('login'))
+
     sorted_teamname = mongo.db.competitors.find().sort('team_name', 1)
     return render_template("updateteams.html",
                            competitors=sorted_teamname)
@@ -125,6 +140,9 @@ def deleteteam(comp_id):
 # Add a team by using a form
 @app.route("/addteam")
 def addteam():
+    if not g.user:
+        return redirect(url_for('login'))
+
     return render_template("addteam.html")
 
 
@@ -151,6 +169,9 @@ def insertteam():
 # Contact page in case of any problems
 @app.route("/contact")
 def contact():
+    if not g.user:
+        return redirect(url_for('login'))
+
     return render_template("contact.html")
 
 
