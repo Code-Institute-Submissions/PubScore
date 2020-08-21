@@ -58,7 +58,7 @@ def before_request():
 # Login for admin
 # Checks if user and password are correct
 # If correct, redirects to dashboard
-# If incorrect, redirects to log in
+# If incorrect, redirects to login
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -173,6 +173,16 @@ def contact():
         return redirect(url_for('login'))
 
     return render_template("contact.html")
+
+
+# Log out page
+@app.route("/logout")
+def logout():
+    if not g.user:
+        return redirect(url_for('login'))
+
+    session.pop('user_id', None)
+    return redirect(url_for('index'))
 
 
 # To run the app

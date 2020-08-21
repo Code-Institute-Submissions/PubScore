@@ -33,7 +33,7 @@
                         <a href="{{ url_for('overview') }}" class="nav-link {% if request.path == url_for('overview') %} active {% endif %}">Overview</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url_for('login') }}" class="nav-link {% if request.path == url_for('login') %} active {% endif %}">Log in</a>
+                        <a href="{{ url_for('login') }}" class="nav-link {% if request.path == url_for('login') %} active {% endif %}">Login</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -50,6 +50,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ url_for('contact') }}" class="nav-link {% if request.path == url_for('contact') %} active {% endif %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('logout') }}" class="nav-link {% if request.path == url_for('logout') %} active {% endif %}">Logout</a>
                     </li>
                     {% endif %}
                 </ul>
