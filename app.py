@@ -81,7 +81,7 @@ def login():
             session['user_id'] = user.id
             return redirect(url_for('dashboard'))
 
-        flash('Please use correct username and password')
+        flash('Please use the correct username and password')
         return redirect(url_for('login'))
 
     return render_template("login.html")
