@@ -11,7 +11,7 @@ if os.path.exists("env.py"):
     import env
 
 
-# Log in configuration
+# Login configuration
 # Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
 class User:
     def __init__(self, id, username, password):
@@ -32,7 +32,9 @@ users.append(User(id=2, username='Admin', password=SECRET_PASSWORD_TWO))
 
 # App instance
 app = Flask(__name__)
-app.secret_key = 'verysecret'
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
+app.secret_key = SECRET_KEY
 
 # MongoDB configuration
 MONGO_URI = os.environ.get("MONGO_URI")
