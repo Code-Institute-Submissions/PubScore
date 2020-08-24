@@ -134,7 +134,7 @@ def updatescore(comp_id, score):
     new_score = old_score + points_scored
     now = datetime.datetime.now()
     today = now.strftime("%d-%m-%Y")
-    competitors.update({'_id': ObjectId(comp_id)},
+    competitors.update_one({'_id': ObjectId(comp_id)},
                        {
                            '$set': {'score': new_score, 'last_update': today}
                        })
@@ -145,7 +145,7 @@ def updatescore(comp_id, score):
 # After update you stay on the updateteams page to do more updates
 @app.route('/deleteteam/<comp_id>')
 def deleteteam(comp_id):
-    mongo.db.competitors.remove({'_id': ObjectId(comp_id)})
+    mongo.db.competitors.delete_one({'_id': ObjectId(comp_id)})
     return redirect(url_for('updateteams'))
 
 
@@ -169,7 +169,7 @@ def insertteam():
         photo = "../static/images/no-photo.png"
     else:
         photo = request.form.get("photo")
-    competitors.insert(
+    competitors.insert_one(
         {
             "team_name": name,
             "score": points,
@@ -203,3 +203,8 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
