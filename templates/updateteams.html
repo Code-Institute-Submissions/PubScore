@@ -22,14 +22,13 @@
                             </p>
                             <input type="number" name="points_scored" id="points_scored" class="form-control" placeholder="Points scored" />
                             <button type="submit" class="btn update-btn">Update score!</button>
-                            <button type="button" class="btn update-btn" data-toggle="modal" data-target="#myModal">Delete team!</button>
+                            <button type="button" class="btn update-btn" data-toggle="modal" data-target="#myModal-{{competitor._id}}">Delete team!</button>
                         </form>
                     </div>
                 </div>
             </div>
-
             <!-- When deleting a team, this modal will become visible to check if that's really what the user wants to do -->
-            <div class="modal fade" id="myModal">
+            <div class="modal fade" id="myModal-{{competitor._id}}">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body">
