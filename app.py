@@ -81,7 +81,7 @@ def login():
             return redirect(url_for('login'))
         if user and user.password == password:
             session['user_id'] = user.id
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('admin'))
 
         flash('Please use the correct username and password')
         return redirect(url_for('login'))
@@ -90,12 +90,12 @@ def login():
 
 
 # Dashboard after login for some explanation
-@app.route("/dashboard")
-def dashboard():
+@app.route("/admin")
+def admin():
     if not g.user:
         return redirect(url_for('login'))
 
-    return render_template("dashboard.html")
+    return render_template("admin.html")
 
 
 # Overview of all the teams in the competition
