@@ -172,6 +172,28 @@ class FlaskTestCases(unittest.TestCase):
         response = tester.get('/logout', follow_redirects=True)
         self.assertIn(b'Welcome to PubScore!', response.data)
 
+    # Ensure required login
+
+    def test_reqlogin_admin(self):
+        tester = app.test_client(self)
+        response = tester.get('/admin', follow_redirects=True)
+        self.assertTrue(b'Login page!' in response.data)
+
+    def test_reqlogin_updateteams(self):
+        tester = app.test_client(self)
+        response = tester.get('/updateteams', follow_redirects=True)
+        self.assertTrue(b'Login page!' in response.data)
+
+    def test_reqlogin_addteam(self):
+        tester = app.test_client(self)
+        response = tester.get('/addteam', follow_redirects=True)
+        self.assertTrue(b'Login page!' in response.data)
+
+    def test_reqlogin_contact(self):
+        tester = app.test_client(self)
+        response = tester.get('/contact', follow_redirects=True)
+        self.assertTrue(b'Login page!' in response.data)
+
 
 if __name__ == "__main__":
     unittest.main()
