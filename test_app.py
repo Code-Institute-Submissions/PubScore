@@ -28,6 +28,11 @@ class FlaskTestCases(unittest.TestCase):
 
     def test_admin(self):
         tester = app.test_client(self)
+        tester.post(
+            '/login',
+            data=dict(username="Frances", password=SECRET_PASSWORD_ONE),
+            follow_redirects=True
+        )
         response = tester.get('/admin', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
@@ -38,17 +43,12 @@ class FlaskTestCases(unittest.TestCase):
 
     def test_updateteams(self):
         tester = app.test_client(self)
+        tester.post(
+            '/login',
+            data=dict(username="Frances", password=SECRET_PASSWORD_ONE),
+            follow_redirects=True
+        )
         response = tester.get('/updateteams', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
-
-    def test_updatescore(self):
-        tester = app.test_client(self)
-        response = tester.get('/updatescore', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
-
-    def test_deleteteam(self):
-        tester = app.test_client(self)
-        response = tester.get('/deleteteam', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
     def test_addteam(self):
@@ -61,19 +61,14 @@ class FlaskTestCases(unittest.TestCase):
         response = tester.get('/addteam', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
-    def test_insertteam(self):
-        tester = app.test_client(self)
-        response = tester.get('/insertteam', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
-
     def test_contact(self):
         tester = app.test_client(self)
+        tester.post(
+            '/login',
+            data=dict(username="Frances", password=SECRET_PASSWORD_ONE),
+            follow_redirects=True
+        )
         response = tester.get('/contact', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
-
-    def test_logout(self):
-        tester = app.test_client(self)
-        response = tester.get('/logout', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
     # Ensure that the pages load correctly
@@ -82,6 +77,56 @@ class FlaskTestCases(unittest.TestCase):
         tester = app.test_client(self)
         response = tester.get('/index', content_type='html/text')
         self.assertTrue(b'Welcome to PubScore!' in response.data)
+
+    def test_login_page_loads(self):
+        tester = app.test_client(self)
+        response = tester.get('/login', content_type='html/text')
+        self.assertTrue(b'Login page!' in response.data)
+
+    def test_admin_page_loads(self):
+        tester = app.test_client(self)
+        tester.post(
+            '/login',
+            data=dict(username="Frances", password=SECRET_PASSWORD_ONE),
+            follow_redirects=True
+        )
+        response = tester.get('/admin', content_type='html/text')
+        self.assertTrue(b'Welcome to your admin page!' in response.data)
+
+    def test_overview_page_loads(self):
+        tester = app.test_client(self)
+        response = tester.get('/overview', content_type='html/text')
+        self.assertTrue(b'Team ranking!' in response.data)
+
+    def test_updateteams_page_loads(self):
+        tester = app.test_client(self)
+        tester.post(
+            '/login',
+            data=dict(username="Frances", password=SECRET_PASSWORD_ONE),
+            follow_redirects=True
+        )
+        response = tester.get('/updateteams', content_type='html/text')
+        self.assertTrue(b'Update teams!' in response.data)
+
+    def test_addteam_page_loads(self):
+        tester = app.test_client(self)
+        tester.post(
+            '/login',
+            data=dict(username="Frances", password=SECRET_PASSWORD_ONE),
+            follow_redirects=True
+        )
+        response = tester.get('/addteam', content_type='html/text')
+        self.assertTrue(b'Add a new team!' in response.data)
+
+    def test_contact_page_loads(self):
+        tester = app.test_client(self)
+        tester.post(
+            '/login',
+            data=dict(username="Frances", password=SECRET_PASSWORD_ONE),
+            follow_redirects=True
+        )
+        response = tester.get('/contact', content_type='html/text')
+        self.assertTrue(b'In case of any problems...' in response.data)
 
     # Ensure that the login behaves correctly, given the correct credentials
 
