@@ -194,6 +194,11 @@ class FlaskTestCases(unittest.TestCase):
         response = tester.get('/contact', follow_redirects=True)
         self.assertTrue(b'Login page!' in response.data)
 
+    def test_reqlogin_logout(self):
+        tester = app.test_client(self)
+        response = tester.get('/logout', follow_redirects=True)
+        self.assertTrue(b'Login page!' in response.data)
+
 
 if __name__ == "__main__":
     unittest.main()
