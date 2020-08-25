@@ -135,9 +135,10 @@ def updatescore(comp_id, score):
     now = datetime.datetime.now()
     today = now.strftime("%d-%m-%Y")
     competitors.update_one({'_id': ObjectId(comp_id)},
-                       {
-                           '$set': {'score': new_score, 'last_update': today}
-                       })
+                           {
+                               '$set':
+                               {'score': new_score, 'last_update': today}
+                           })
     return redirect(url_for('updateteams'))
 
 
