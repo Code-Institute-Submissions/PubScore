@@ -1,4 +1,6 @@
-# All the imports needed for this project
+"""
+All the imports needed for this project
+"""
 import os
 from flask import (Flask, g, render_template, redirect,
                    request, url_for, session, flash)
@@ -6,13 +8,20 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import datetime
 
-# Import my env.py that's ignored by git
+
+"""
+Import my env.py that's ignored by git
+"""
 if os.path.exists("env.py"):
     import env
 
 
-# Login configuration
-# Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
+"""
+Login configuration
+Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
+"""
+
+
 class User:
     def __init__(self, id, username, password):
         self.id = id
@@ -30,30 +39,39 @@ users.append(User(id=1, username='Frances', password=SECRET_PASSWORD_ONE))
 users.append(User(id=2, username='Admin', password=SECRET_PASSWORD_TWO))
 
 
+"""
 # App instance
+"""
 app = Flask(__name__)
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 app.secret_key = SECRET_KEY
 
-# MongoDB configuration
+
+"""
+MongoDB configuration
+"""
 MONGO_URI = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'PubScore'
 app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
 
 
-# Index to welcome the user
 @app.route("/")
 @app.route("/index")
 def index():
+    """
+    Index to welcome the user
+    """
     return render_template("index.html")
 
 
-# Set g.user at login to show the right navigation links
-# Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
 @app.before_request
 def before_request():
+    """
+    Set g.user at login to show the right navigation links
+    Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
+    """
     g.user = None
 
     if 'user_id' in session:
@@ -61,13 +79,15 @@ def before_request():
         g.user = user
 
 
-# Login for admin
-# Checks if user and password are correct
-# If correct, redirects to dashboard
-# If incorrect, redirects to login and shows message for user
-# Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    """
+    Login for admin
+    Checks if user and password are correct
+    If correct, redirects to dashboard
+    If incorrect, redirects to login and shows message for user
+    Used tutorial: https://www.youtube.com/watch?v=2Zz97NVbH0U
+    """
     if request.method == 'POST':
         session.pop('user_id', None)
 
@@ -89,31 +109,37 @@ def login():
     return render_template("login.html")
 
 
-# Dashboard after login for some explanation
 @app.route("/admin")
 def admin():
+    """
+    Dashboard after login for some explanation
+    """
     if not g.user:
         return redirect(url_for('login'))
 
     return render_template("admin.html")
 
 
-# Overview of all the teams in the competition
-# sorted from highest to lowest score
-# Everybody can view this page
 @app.route("/overview")
 def overview():
+    """
+    Overview of all the teams in the competition
+    sorted from highest to lowest score
+    Everybody can view this page
+    """
     sorted_score = mongo.db.competitors.find().sort('score', -1)
     return render_template("overview.html",
                            competitors=sorted_score)
 
 
-# Overview of all the teams in the competiton
-# From here the admin can add points for all the teams
-# From here the admin can delete teams from the competition
-# Sorted by teamname for easy updating
 @app.route("/updateteams")
 def updateteams():
+    """
+    Overview of all the teams in the competiton
+    From here the admin can add points for all the teams
+    From here the admin can delete teams from the competition
+    Sorted by teamname for easy updating
+    """
     if not g.user:
         return redirect(url_for('login'))
 
@@ -122,12 +148,14 @@ def updateteams():
                            competitors=sorted_teamname)
 
 
-# Adds the scored points to the original score
-# Adds or updates date of last adjustment by admin
-# After update you stay on the updateteams page to do more updates
 @app.route('/updatescore/<comp_id>/<score>',
            methods=['POST'])
 def updatescore(comp_id, score):
+    """
+    Adds the scored points to the original score
+    Adds or updates date of last adjustment by admin
+    After update you stay on the updateteams page to do more updates
+    """
     competitors = mongo.db.competitors
     points_scored = int(request.form.get('points_scored'))
     old_score = int(score)
@@ -142,27 +170,33 @@ def updatescore(comp_id, score):
     return redirect(url_for('updateteams'))
 
 
-# Deletes team
-# After update you stay on the updateteams page to do more updates
 @app.route('/deleteteam/<comp_id>')
 def deleteteam(comp_id):
+    """
+    Deletes team
+    After update you stay on the updateteams page to do more updates
+    """
     mongo.db.competitors.delete_one({'_id': ObjectId(comp_id)})
     return redirect(url_for('updateteams'))
 
 
-# Add a team by using a form
 @app.route("/addteam")
 def addteam():
+    """
+    Add a team by using a form
+    """
     if not g.user:
         return redirect(url_for('login'))
 
     return render_template("addteam.html")
 
 
-# Insert team to the database
-# If there is no team photo no-photo.png gets asigned
 @app.route('/insertteam', methods=['POST'])
 def insertteam():
+    """
+    Insert team to the database
+    If there is no team photo no-photo.png gets asigned
+    """
     competitors = mongo.db.competitors
     name = request.form.get("team_name").capitalize()
     points = int(request.form.get("score"))
@@ -179,19 +213,23 @@ def insertteam():
     return redirect(url_for('overview'))
 
 
-# Contact page in case of any problems
 @app.route("/contact")
 def contact():
+    """
+    Contact page in case of any problems
+    """
     if not g.user:
         return redirect(url_for('login'))
 
     return render_template("contact.html")
 
 
-# Log out
-# Used example from: https://www.roytuts.com/python-login-and-logout-example/
 @app.route("/logout")
 def logout():
+    """
+    Log out
+    Used example from: https://www.roytuts.com/python-login-and-logout-example/
+    """
     if not g.user:
         return redirect(url_for('login'))
 
@@ -199,13 +237,18 @@ def logout():
     return redirect(url_for('index'))
 
 
-# To run the app
+"""
+To run the app
+"""
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)
 
 
+"""
+To debug my code
+"""
 if __name__ == "__main__":
     import doctest
     doctest.testmod()

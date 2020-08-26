@@ -1,20 +1,35 @@
-# Imports needed
+"""
+Imports needed
+"""
 import os
 from app import app
 import unittest
 
-# Import my env.py that's ignored by git
+
+"""
+Import my env.py that's ignored by git
+"""
 if os.path.exists("env.py"):
     import env
 
-# Set secret passwords for login tests
+
+"""
+Set secret passwords for login tests
+"""
 SECRET_PASSWORD_ONE = os.environ.get("SECRET_PASSWORD_ONE")
 SECRET_PASSWORD_TWO = os.environ.get("SECRET_PASSWORD_TWO")
 
-# Used https://www.youtube.com/watch?v=1aHNs1aEATg for instructions
+
+"""
+Used https://www.youtube.com/watch?v=1aHNs1aEATg for instructions
+"""
+
+
 class FlaskTestCases(unittest.TestCase):
 
-    # Ensure that flask routes where setup correctly
+    """
+    Ensure that flask routes where setup correctly
+    """
 
     def test_index(self):
         tester = app.test_client(self)
@@ -71,7 +86,9 @@ class FlaskTestCases(unittest.TestCase):
         response = tester.get('/contact', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
-    # Ensure that the pages load correctly
+    """
+    Ensure that the pages load correctly
+    """
 
     def test_index_page_loads(self):
         tester = app.test_client(self)
@@ -128,7 +145,9 @@ class FlaskTestCases(unittest.TestCase):
         response = tester.get('/contact', content_type='html/text')
         self.assertTrue(b'In case of any problems...' in response.data)
 
-    # Ensure that the login behaves correctly, given the correct credentials
+    """
+    Ensure that the login behaves correctly, given the correct credentials
+    """
 
     def test_correct_credentials_1(self):
         tester = app.test_client(self)
@@ -148,7 +167,9 @@ class FlaskTestCases(unittest.TestCase):
         )
         self.assertIn(b'Welcome to your admin page!', response.data)
 
-    # Ensure that the login behaves correctly, given the wrong credentails
+    """
+    Ensure that the login behaves correctly, given the wrong credentails
+    """
 
     def test_wrong_credentials(self):
         tester = app.test_client(self)
@@ -160,7 +181,9 @@ class FlaskTestCases(unittest.TestCase):
         self.assertIn(b'Please use the correct username and password',
                       response.data)
 
-    # Ensure logout behaves correctly
+    """
+    Ensure logout behaves correctly
+    """
 
     def test_correct_logout(self):
         tester = app.test_client(self)
@@ -172,7 +195,9 @@ class FlaskTestCases(unittest.TestCase):
         response = tester.get('/logout', follow_redirects=True)
         self.assertIn(b'Welcome to PubScore!', response.data)
 
-    # Ensure required login
+    """
+    Ensure required login
+    """
 
     def test_reqlogin_admin(self):
         tester = app.test_client(self)
