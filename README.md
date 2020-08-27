@@ -31,3 +31,9 @@ As Admin you can add teams to the competiton and update there scores after each 
     * [Phone Wireframes](https://i.ibb.co/rf2FVSq/mock-up-phone.jpg)
     * [Tablet Wireframes](https://i.ibb.co/L6JzHZW/mock-up-tablet.jpg)
     * [Screen Wireframes](https://i.ibb.co/DGRCB04/mock-up-laptop.jpg)
+## Features
+* I've made sure the site is responsive and easy to use on different devices.
+* The site contains interactive elements like color changes when hovering over elements and a hamburger menu that changes when clicked on.
+* The site contains a login option.
+* The site contains a logout option.
+* The site contains a contact form for the admin in case of problems.
