@@ -37,3 +37,20 @@ As Admin you can add teams to the competiton and update there scores after each 
 * The site contains a login option.
 * The site contains a logout option.
 * The site contains a contact form for the admin in case of problems.
+## Technologies used
+I have used the following technologys for this project:
+* HTML5, because it is the standard markup language for Web Pages
+* CSS3, to style the website
+* Javascript, for the use of a contact form
+* [Python](https://www.python.org), for the backend
+* [MongoDB](https://www.mongodb.com), for my database
+* BSON, to store my data
+* Unittest, for testing my Python code
+* [Heroku](https://heroku.com), to deploy my app
+* [Gitpod](https://gitpod.io), for my development environment
+* [Github](https://github.com), for version control
+* [Bootstrap](https://getbootstrap.com/), to make my website responsive and mobile-first
+* [Google Fonts](https://fonts.google.com/), to choose and combine my fonts
+* [Coolors](https://coolors.co/), to choose my and combine my colors
+* [EmailJS](https://www.emailjs.com/), to let the user be able to contact me
+
